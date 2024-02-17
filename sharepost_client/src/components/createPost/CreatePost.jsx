@@ -11,6 +11,7 @@ const CreatePost = () => {
   const { user, access_token } = useContext(AuthContext);
   const [files, setFiles] = useState([]);
   const [filePreviews, setFilePreviews] = useState([]);
+  const [uploading, setUploading] = useState(false);
 
   const handleFileChange = (event) => {
     const fileList = event.target.files;
@@ -71,6 +72,7 @@ const CreatePost = () => {
   };
 
   const handlePost = async () => {
+    setUploading(true);
     try {
       if (filePreviews.length === 0) {
         console.log("Please add images!!!");
@@ -89,10 +91,12 @@ const CreatePost = () => {
         setFilePreviews([]);
         setFiles([]);
         setPostInfo({});
+        window.location.reload();
       }
     } catch (error) {
       console.log("Error:", error);
     }
+    setUploading(false);
   };
 
   return (
@@ -173,11 +177,12 @@ const CreatePost = () => {
         <div className="flex flex-wrap items-center justify-end w-full ">
           <button
             className="flex items-center justify-start gap-1 px-2 py-1 bg-blue-600 text-white rounded-xl text-md  my-2"
+            disabled={uploading}
             onClick={() => {
               handlePost();
             }}
           >
-            Post
+            {uploading ? "Posting..." : "Post"}
           </button>
         </div>
       )}
