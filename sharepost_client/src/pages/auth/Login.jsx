@@ -110,7 +110,7 @@ export default function Login() {
   };
   return (
     <div className="bg-gray-50 h-screen flex items-center justify-center p-5">
-      <div className="bg-cyan-100 flex rounded-2xl max-w-4xl p-5 shadow-lg">
+      <div className="bg-cyan-100 flex rounded-2xl w-full  max-w-4xl p-5 shadow-lg">
         <div className="sm:w-1/2 text-[#002D74] px-8">
           <h2 className="font-bold text-3xl mt-16">Login</h2>
           <p className="text-sm mt-4">
@@ -194,7 +194,7 @@ export default function Login() {
           </div>
         </div>
 
-        <div className="sm:flex hidden items-center justify-center w-1/2">
+        <div className="flex items-center justify-center w-1/2">
           <img src={wolf} alt="/" />
         </div>
       </div>

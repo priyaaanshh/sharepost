@@ -19,7 +19,7 @@ const Sidebar = () => {
           to="/"
           className="my-8 flex items-center justify-start gap-3 px-6 lg:px-12 py-8 w-full h-10 rounded-md cursor-pointer"
         >
-          <div className="hidden lg:flex text-xl font-semibold italic">
+          <div className="flex text-xl font-semibold italic">
             Sharepost.com
           </div>
         </Link>
@@ -34,7 +34,7 @@ const Sidebar = () => {
           <div className="flex items-center justify-center ">
             <GoHome />
           </div>
-          <div className="hidden lg:flex">Home</div>
+          <div className="flex">Home</div>
         </Link>
         <Link
           to="/"
@@ -46,7 +46,7 @@ const Sidebar = () => {
           <div className="flex items-center justify-center ">
             <IoSearchOutline />
           </div>
-          <div className="hidden lg:flex">Search</div>
+          <div className="flex">Search</div>
         </Link>
         <Link
           to="/"
@@ -58,7 +58,7 @@ const Sidebar = () => {
           <div className="flex items-center justify-center ">
             <IoCompassOutline />
           </div>
-          <div className="hidden lg:flex">Explore</div>
+          <div className="flex">Explore</div>
         </Link>
         <Link
           to="/"
@@ -70,7 +70,7 @@ const Sidebar = () => {
           <div className="flex items-center justify-center ">
             <IoIosSend />
           </div>
-          <div className="hidden lg:flex">Messages</div>
+          <div className="flex">Messages</div>
         </Link>
         <Link
           to="/"
@@ -82,7 +82,7 @@ const Sidebar = () => {
           <div className="flex items-center justify-center ">
             <IoIosHeartEmpty />
           </div>
-          <div className="hidden lg:flex">Notification</div>
+          <div className="flex">Notification</div>
         </Link>
         <Link
           to="/"
@@ -94,7 +94,7 @@ const Sidebar = () => {
           <div className="flex items-center justify-center ">
             <BsPlusSquare />
           </div>
-          <div className="hidden lg:flex">Create</div>
+          <div className="flex">Create</div>
         </Link>
         <Link
           to="/"
@@ -110,7 +110,7 @@ const Sidebar = () => {
               alt=""
             />
           </div>
-          <div className="hidden lg:flex">Profile</div>
+          <div className="flex">Profile</div>
         </Link>
       </div>
 
@@ -129,7 +129,7 @@ const Sidebar = () => {
           <div className="flex items-center justify-center ">
             <IoMdLogOut />
           </div>
-          <div className="hidden lg:flex">Logout</div>
+          <div className="flex">Logout</div>
         </Link>
       </div>
     </div>

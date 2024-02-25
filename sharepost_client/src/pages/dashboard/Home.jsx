@@ -19,7 +19,7 @@ const Home = () => {
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(true);
   const [posts, setPosts] = useState([]);
-  
+
   const getPost = async () => {
     try {
       const response = await axios.get(`${server}/post/get/${page}/${10}`);
@@ -71,7 +71,7 @@ const Home = () => {
       className="flex w-full justify-center sm:justify-between bg-cyan-50
     "
     >
-      <div className="hidden sm:flex">
+      <div className="flex">
         <Sidebar />
       </div>
       <div className="flex flex-col items-center justify-start w-full px-2">
@@ -90,7 +90,7 @@ const Home = () => {
           </div>
         </div>
       </div>
-      <div className="hidden sm:flex">
+      <div className="flex">
         <RightSidebar />
       </div>
     </div>

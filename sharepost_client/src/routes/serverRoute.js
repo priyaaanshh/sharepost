@@ -1,3 +1,3 @@
-const server = "https://sharepost-server-eta.vercel.app/api/v1"
+const server = "http://localhost:8080/api/v1"
 
 export default server;
