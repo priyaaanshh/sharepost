@@ -8,6 +8,7 @@ import { useCookies } from 'react-cookie'
 import authenticateToken from './utils/Preloader'
 import { FadeLoader } from "react-spinners";
 import { css } from "@emotion/react";
+import Show from './pages/newpage/show'
 
 
 
@@ -46,6 +47,7 @@ const App = () => {
         <Route path='/' element={<Home />} />
         <Route path='/login' element={<Login />} />
         <Route path='/signup' element={<SignUp />} />
+        <Route path='/show' element={<Show />} />
       </Routes> : <Routes>
         <Route path='*' element={<Navigate to='/login' replace />} />
         <Route path='/login' element={<Login />} />

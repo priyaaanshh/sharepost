@@ -5,6 +5,7 @@ import Sidebar from "../../components/sidebar/Sidebar";
 import RightSidebar from "../../components/sidebar/RightSidebar";
 import axios from "axios";
 import server from "../../routes/serverRoute";
+import InfiniteScroll from "react-infinite-scroll-component";
 
 import { FadeLoader } from "react-spinners";
 import { css } from "@emotion/react";
@@ -16,15 +17,18 @@ const override = css`
 `;
 
 const Home = () => {
+  const limit = 2;
   const [page, setPage] = useState(1);
-  const [loading, setLoading] = useState(true);
+  const [hasMore, setHasMore] = useState(true);
   const [posts, setPosts] = useState([]);
 
   const getPost = async () => {
     try {
-      const response = await axios.get(`${server}/post/get/${page}/${10}`);
+      const response = await axios.get(`${server}/post/get/${page}/${limit}`);
+      if (response.data.posts.length === 0) {
+        setHasMore(false);
+      }
       if (response.data.posts) {
-        setLoading(false);
         setPosts((prevPosts) => {
           const newPosts = response.data.posts.filter(
             (newPost) =>
@@ -33,38 +37,14 @@ const Home = () => {
           return [...prevPosts, ...newPosts];
         });
       }
-      setLoading(false);
     } catch (error) {
-      setLoading(false);
       console.log(error);
     }
   };
-  // getPost();
 
   useEffect(() => {
     getPost();
   }, [page]);
-
-  const handelInfiniteScroll = async () => {
-    if (page > posts.length) {
-      return;
-    }
-    try {
-      if (
-        window.innerHeight + document.documentElement.scrollTop + 500 >=
-        document.documentElement.scrollHeight
-      ) {
-        setLoading(true);
-        setPage((prev) => prev + 1);
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  };
-  useEffect(() => {
-    window.addEventListener("scroll", handelInfiniteScroll);
-    return () => window.removeEventListener("scroll", handelInfiniteScroll);
-  }, []);
 
   return (
     <div
@@ -76,20 +56,49 @@ const Home = () => {
       </div>
       <div className="flex flex-col items-center justify-start w-full px-2">
         <div className="max-w-[400px] w-full sm:max-w-[500px] mt-2">
-          <CreatePost />
-          {posts.map((post, index) => (
-            <Card post={post} key={index} />
-          ))}
-          <div className="flex py-2 w-full items-center justify-center">
-            <FadeLoader
-              color={"#123abc"}
-              loading={loading}
-              css={override}
-              size={150}
-            />
-          </div>
+          <InfiniteScroll
+            dataLength={posts.length} //This is important field to render the next data
+            next={() => {
+              setPage(page + 1);
+            }}
+            hasMore={hasMore}
+            loader={
+              <div className="flex py-2 w-full items-center justify-center">
+                <FadeLoader
+                  color={"#123abc"}
+                  loading={true}
+                  css={override}
+                  size={150}
+                />
+              </div>
+            }
+            endMessage={
+              <p style={{ textAlign: "center" }}>
+                Looks like you've reached end of the result.
+              </p>
+            }
+            style={{
+              overflow: "hidden",
+            }}
+          >
+            <CreatePost />
+            {posts.map((post, index) => (
+              <Card post={post} key={index} />
+            ))}
+            {posts.length === 0 && (
+              <div className="flex py-2 w-full items-center justify-center">
+                <FadeLoader
+                  color={"#123abc"}
+                  loading={true}
+                  css={override}
+                  size={150}
+                />
+              </div>
+            )}
+          </InfiniteScroll>
         </div>
       </div>
+
       <div className="flex">
         <RightSidebar />
       </div>

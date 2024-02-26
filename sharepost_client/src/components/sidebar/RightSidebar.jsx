@@ -9,7 +9,7 @@ const RightSidebar = () => {
   const [cookies, setCookie, removeCookie] = useCookies(["access_token"]);
 
   return (
-    <div className="sticky top-0 text-lg flex flex-col items-start justify-between py-2 px-4 w-full  lg:w-80 h-screen">
+    <div className="sticky top-0 text-lg flex flex-col items-start justify-between py-2 px-4 w-full  lg:w-60 h-screen">
       <div className="shadow-md flex items-center justify-between px-4 py-2 w-full h-20 bg-cyan-100 rounded-lg flex-col lg:flex-row">
         <div className="flex items-center justify-normal gap-3 cursor-pointer">
           <img

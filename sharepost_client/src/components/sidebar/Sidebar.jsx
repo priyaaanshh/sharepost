@@ -1,6 +1,5 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
-import avatar from "../../assets/images/avatar.png";
 import { IoIosHeartEmpty, IoIosSend, IoMdLogOut } from "react-icons/io";
 import { GoHome } from "react-icons/go";
 import { IoCompassOutline, IoSearchOutline } from "react-icons/io5";
@@ -17,9 +16,9 @@ const Sidebar = () => {
       <div className="flex flex-col w-full items-center justify-start gap-4">
         <Link
           to="/"
-          className="my-8 flex items-center justify-start gap-3 px-6 lg:px-12 py-8 w-full h-10 rounded-md cursor-pointer"
+          className="flex my-8 items-center justify-start gap-3 px-6 lg:px-12 py-8 w-full h-10 rounded-md cursor-pointer"
         >
-          <div className="flex text-xl font-semibold italic">
+          <div className="text-xl font-semibold italic">
             Sharepost.com
           </div>
         </Link>
