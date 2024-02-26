@@ -56,6 +56,7 @@ const Home = () => {
       </div>
       <div className="flex flex-col items-center justify-start w-full px-2">
         <div className="max-w-[400px] w-full sm:max-w-[500px] mt-2">
+          <CreatePost />
           <InfiniteScroll
             dataLength={posts.length} //This is important field to render the next data
             next={() => {
@@ -73,7 +74,7 @@ const Home = () => {
               </div>
             }
             endMessage={
-              <p style={{ textAlign: "center" }}>
+              <p className="text-center my-5 text-slate-500">
                 Looks like you've reached end of the result.
               </p>
             }
@@ -81,11 +82,10 @@ const Home = () => {
               overflow: "hidden",
             }}
           >
-            <CreatePost />
             {posts.map((post, index) => (
               <Card post={post} key={index} />
             ))}
-            {posts.length === 0 && (
+            {posts.length === 0 && hasMore && (
               <div className="flex py-2 w-full items-center justify-center">
                 <FadeLoader
                   color={"#123abc"}
